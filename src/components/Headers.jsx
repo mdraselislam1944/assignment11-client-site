@@ -10,13 +10,11 @@ const Headers = () => {
                         <div>
                             <img className='w-52 h-20 rounded' src={logo} alt="" />
                         </div>
-                        <div>
-                            <ul className="flex space-x-4 items-center">
-                                {/* <li><Link to='/' className="text-gray-300 hover:text-white">Home</Link></li> */}
-                                <li><button className='btn'><Link to='/'>Home</Link></button></li>
-                                <li><button className='btn'><Link to='/'>All Toys</Link></button></li>
-                                <li><button className='btn'><Link to='/blocks'>Blocks</Link></button></li>
-                            </ul>
+                        <div className="flex space-x-4 items-center">
+                            <Link to='/'><button className='btn'>Home</button></Link>
+                            <Link to='/'><button className='btn'>All Toys</button></Link>
+                            <Link to='/blocks'> <button className='btn'>block</button></Link>
+                            <Link to='/login'> <button className='btn'>login</button></Link>
                         </div>
                         <div>
                             <ul className="flex space-x-4 items-center">

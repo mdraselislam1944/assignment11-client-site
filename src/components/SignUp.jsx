@@ -1,9 +1,41 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
+import { AuthContext } from './AuthProviders';
+import { Result } from 'postcss';
 
 const SignUp = () => {
+    const {createUser}=useContext(AuthContext);
+    const handleSingUp = (event) => {
+        event.preventDefault();
+        const form = event.target;
+        const name=form.name.value;
+        const email = form.email.value;
+        const password = form.password.value;
+        const photo=form.photo.value;
+        createUser(email,password)
+        .then(result=>{
+            console.log(result);
+            form.reset();
+        })
+        .catch(error=>{
+            alert(error.message);
+            console.log(error.message);
+        })
+    }
     return (
-        <div>
-           <h1>this is sign up pge</h1> 
+        <div className='text-center my-10'>
+            <h1 className='text-3xl'>Please Register</h1>
+            <form className='my-5' onSubmit={handleSingUp}>
+                <input type="text" name="name" id="name" className="my-2 input input-bordered input-info w-full max-w-xs" placeholder="Enter your name" required /><br />
+                <input type="email" name="email" id="email" className="input input-bordered input-info w-full max-w-xs" placeholder="Enter your Email" required /><br />
+                <input type="password" name="password" id="password" placeholder="Enter Password" className=" my-2 input input-bordered input-info w-full max-w-xs" required /><br />
+                <input type="text" name="photo" id="photo" placeholder="Enter your photo link" className=" my-2 input input-bordered input-info w-full max-w-xs" required /><br />
+                <input className=" btn  w-full max-w-xs" type="submit" value="Register" />
+            </form>
+            <div className='text-3xl'>
+                <small className='mx-2'>ALready Register? Please</small>
+                <Link to='/login'><button className="btn btn-outline btn-info ">Login</button></Link>
+            </div>
         </div>
     );
 };
