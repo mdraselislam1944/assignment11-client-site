@@ -5,8 +5,10 @@ const Admin = () => {
         event.preventDefault();
         const form=event.target;
         const img=form.img.value;
-        const description=form.description.value;
-        const volunteerData={img,description};
+        const name=form.name.value;
+        const price=form.price.value;
+        const rating=form.rating.value;
+        const volunteerData={img,name,price,rating};
         form.reset();
        fetch('http://localhost:5000/volunteer',{
         method: 'POST',
@@ -16,7 +18,10 @@ const Admin = () => {
         body: JSON.stringify(volunteerData)
        })
        .then(res=>res.json())
-       .then(data=>console.log(data))
+       .then(data=>{
+        console.log(data);
+        alert('added successfully');
+       })
        .catch(error=>console.log(error.message));
     }
     return (
@@ -24,9 +29,11 @@ const Admin = () => {
             <div>
                 <h1 className='font-bold text-3xl'>Set Home Address Data</h1>
                 <form className='my-5' onSubmit={handleVolunteerData}>
-                <input type="text" name="img" id="img" placeholder="Enter Image" className="input input-bordered w-full max-w-xs " /><br/>
-                <input type="text" name="description" id="description"  placeholder="Enter Description" className="input input-bordered w-full max-w-xs my-2" /><br/>
+                <input type="text" name="img" id="img" placeholder="Enter Image" className="input input-bordered w-full max-w-xs " required/><br/>
+                <input type="text" name="name" id="name"  placeholder="Enter product name" className="input input-bordered w-full max-w-xs my-2" required/><br/>
                 {/* <button className="btn btn-wide btn-success">Submit Data</button> */}
+                <input type="number" name="price" id="price" placeholder='Enter Price amount'  className="input input-bordered w-full max-w-xs my-2" required/><br />
+                <input type="number" name="rating" id="rating" placeholder='Enter product rating'  className="input input-bordered w-full max-w-xs my-2" required/><br />
                 <input className="btn btn-wide btn-success" type="submit" value="submit" />
                 </form>
             </div>

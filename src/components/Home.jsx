@@ -17,7 +17,7 @@ const Home = () => {
             </div>
             <div className='grid grid-cols-3'>
                 {
-                    // volunteerData.map(volunteer=><ShowVolunteer key={volunteer._id} volunteer={volunteer}></ShowVolunteer>)
+                    volunteerData.map(volunteer=><ShowVolunteer key={volunteer._id} volunteer={volunteer}></ShowVolunteer>)
                 }
             </div>
 
