@@ -1,25 +1,32 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from './AuthProviders';
-
 const SignUp = () => {
-    const {createUser}=useContext(AuthContext);
+    const { createUser, updateProfileDetail } = useContext(AuthContext);
+    const navigate = useNavigate();
     const handleSingUp = (event) => {
         event.preventDefault();
         const form = event.target;
-        const name=form.name.value;
+        const name = form.name.value;
         const email = form.email.value;
         const password = form.password.value;
-        const photo=form.photo.value;
-        createUser(email,password)
-        .then(result=>{
-            console.log(result);
-            form.reset();
-        })
-        .catch(error=>{
-            alert(error.message);
-            console.log(error.message);
-        })
+        const photoUrls = form.photo.value;
+        createUser(email, password)
+            .then(result => {
+                console.log(result);
+                form.reset();
+                updateProfileDetail(name, photoUrls)
+                    .then(result => {
+                    }).catch((error) => {
+                        console.log(error.message);
+                    });
+                navigate('/login');
+            })
+            .catch(error => {
+                alert(error.message);
+                console.log(error.message);
+            })
+
     }
     return (
         <div className='text-center my-10'>
