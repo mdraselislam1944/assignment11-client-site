@@ -2,6 +2,8 @@ import React from 'react';
 import { useLoaderData } from 'react-router-dom';
 import ShowVolunteer from './ShowVolunteer';
 import Banner from './Banner';
+import DiscountProducts from './DiscountProducts';
+import NewProducts from './NewProducts';
 
 const Home = () => {
     const volunteerData = useLoaderData();
@@ -22,7 +24,8 @@ const Home = () => {
                 }
             </div>
             </div>
-
+            <DiscountProducts></DiscountProducts>
+            <NewProducts></NewProducts>
         </>
     );
 };
