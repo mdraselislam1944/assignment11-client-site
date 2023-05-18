@@ -4,21 +4,17 @@ import logo from '../assets/logo.png';
 import { AuthContext } from './AuthProviders';
 const Headers = () => {
     const { user, logOut } = useContext(AuthContext);
-    if(user){
-        console.log(user.displayName);
-        console.log(user.photoURL);
-    }
     const handleLogout = () => {
         logOut()
             .then(result => {
-               alert('logOut Successfully');
+                alert('logOut Successfully');
             })
             .catch(error => {
-               alert(error.message)
+                alert(error.message)
             })
     }
     const handleMouseEnter=()=>{
-
+        alert(user.displayName);
     }
     return (
         <>
@@ -38,7 +34,7 @@ const Headers = () => {
                                     user ? <>
                                         <li> <Link to='/'><button className='btn' onClick={handleLogout}>logOut</button></Link></li>
                                         <li><button className='btn'><Link to='/'>My Toys</Link></button></li>
-                                        <li><Link to={user.displayName}><img className='h-16 w-16 rounded-full' src={user.photoURL} alt="" onMouseEnter={handleMouseEnter} /></Link></li>
+                                        <li onMouseEnter={handleMouseEnter} ><img className='h-16 w-16 rounded-full' src={user.photoURL} alt="" /></li>
                                         <li><button className='btn'><Link to='/'>Add Toys</Link></button></li>
                                     </> : <>
                                         <Link to='/login'> <button className='btn'>login</button></Link>
