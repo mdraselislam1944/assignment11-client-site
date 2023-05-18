@@ -1,7 +1,18 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../assets/logo.png';
+import { AuthContext } from './AuthProviders';
 const Headers = () => {
+    const { user, logOut } = useContext(AuthContext);
+    const handleLogout = () => {
+        logOut()
+            .then(result => {
+               alert('logOut Successfully');
+            })
+            .catch(error => {
+               alert(error.message)
+            })
+    }
     return (
         <>
             <nav className="bg-white">
@@ -13,14 +24,20 @@ const Headers = () => {
                         <div className="flex space-x-4 items-center">
                             <Link to='/'><button className='btn'>Home</button></Link>
                             <Link to='/'><button className='btn'>All Toys</button></Link>
-                            <Link to='/blocks'> <button className='btn'>block</button></Link>
-                            <Link to='/login'> <button className='btn'>login</button></Link>
                         </div>
                         <div>
                             <ul className="flex space-x-4 items-center">
-                                <li><button className='btn'><Link to='/'>My Toys</Link></button></li>
-                                <li><button className='btn'><Link to='/'>User Profile</Link></button></li>
-                                <li><button className='btn'><Link to='/'>Add Toys</Link></button></li>
+                                {
+                                    user ? <>
+                                        <li> <Link to='/'><button className='btn' onClick={handleLogout}>logOut</button></Link></li>
+                                        <li><button className='btn'><Link to='/'>My Toys</Link></button></li>
+                                        <li><button className='btn'><Link to='/'>User Profile</Link></button></li>
+                                        <li><button className='btn'><Link to='/'>Add Toys</Link></button></li>
+                                    </> : <>
+                                        <Link to='/login'> <button className='btn'>login</button></Link>
+                                        <Link to='/blocks'> <button className='btn'>block</button></Link>
+                                    </>
+                                }
                             </ul>
                         </div>
                     </div>

@@ -2,57 +2,54 @@
 import React, { createContext, useEffect, useState } from 'react';
 import { GithubAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
 import app from '../Firebase/firebase.config';
-export const AuthContext=createContext(null);
-const googleProvider=new GoogleAuthProvider();
-const githubProvider=new GithubAuthProvider();
-const auth=getAuth(app);
-const AuthProvider = ({children}) => {
+export const AuthContext = createContext(null);
+const googleProvider = new GoogleAuthProvider();
+const githubProvider = new GithubAuthProvider();
+const auth = getAuth(app);
+const AuthProvider = ({ children }) => {
 
-    const use={
-        name:"rasel",
+    const [user, setUser] = useState(null);
+    const [loading, setLoading] = useState(true);
+    const createUser = (email, password) => {
+        setLoading(true);
+        return createUserWithEmailAndPassword(auth, email, password);
     }
 
-    const [user,setUser]=useState(null);
+    const signIn = (email, password) => {
+        setLoading(true)
+        return signInWithEmailAndPassword(auth, email, password);
+    }
 
-const createUser=(email,password)=>{
-    return createUserWithEmailAndPassword(auth,email,password);
-}
+    const logOut = () => {
+        return signOut(auth);
+    }
 
-const signIn=(email,password)=>{
-    return signInWithEmailAndPassword(auth,email,password);
-}
+    const googleLogin = () => {
+        return signInWithPopup(auth, googleProvider);
+    }
+    const githubLogin = () => {
+        return signInWithPopup(auth, githubProvider);
+    }
 
-const logOut=()=>{
-    return signOut(auth);
-}
-
-const googleLogin=()=>{
-   return signInWithPopup(auth,googleProvider);
-}
-const githubLogin=()=>{
-    return signInWithPopup(auth,githubProvider);
-}
-
-useEffect(()=>{
-const unsubscribe=onAuthStateChanged(auth,currentUser=>{
-    setUser(currentUser);
-});
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, currentUser => {
+            setUser(currentUser);
+            setLoading(false);
+        });
 
 
-return ()=>{
-    unsubscribe();
-}
-},[])
-
-
-    const authInfo={
+        return () => {
+           return unsubscribe();
+        }
+    }, [])
+    const authInfo = {
         user,
+        loading,
         createUser,
         signIn,
         logOut,
         googleLogin,
         githubLogin,
-        use,
     }
     return (
         <AuthContext.Provider value={authInfo}>
