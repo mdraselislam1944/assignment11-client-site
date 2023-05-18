@@ -14,6 +14,7 @@ import Logout from './components/SignUp.jsx';
 import Admin from './components/Admin.jsx';
 import AuthProviders from './components/AuthProviders.jsx';
 import Blocks from './components/Blocks.jsx';
+import Product_detail from './components/product_detail.jsx';
 
 
 const router = createBrowserRouter([
@@ -41,6 +42,11 @@ const router = createBrowserRouter([
       {
         path:'/blocks',
         element:<Blocks></Blocks>
+      },
+      {
+        path:'/product_detail/:id',
+        element:<Product_detail></Product_detail>,
+        loader:({params})=>fetch(`http://localhost:5000/volunteer/${params.id}`)
       }
     ]
   },

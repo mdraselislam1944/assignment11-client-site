@@ -15,10 +15,12 @@ const Home = () => {
                     <button className='btn'>Search</button>
                 </form>
             </div>
+            <div className='ms-24'>
             <div className='grid grid-cols-3'>
                 {
                     volunteerData.map(volunteer=><ShowVolunteer key={volunteer._id} volunteer={volunteer}></ShowVolunteer>)
                 }
+            </div>
             </div>
 
         </>
