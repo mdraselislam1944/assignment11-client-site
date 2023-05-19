@@ -1,9 +1,7 @@
 import React from 'react';
 import { useLoaderData } from 'react-router-dom';
-
 const AllToys = () => {
     const products = useLoaderData();
-    console.log(products);
     return (
         <div className='my-5'>
             <h1 className='text-center text-3xl'>All Toys Products</h1>
