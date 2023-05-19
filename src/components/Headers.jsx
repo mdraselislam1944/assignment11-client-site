@@ -27,6 +27,7 @@ const Headers = () => {
                         <div className="flex space-x-4 items-center">
                             <Link to='/'><button className='btn'>Home</button></Link>
                             <Link to='/'><button className='btn'>All Toys</button></Link>
+                            <Link to='/blocks'> <button className='btn'>block</button></Link>
                         </div>
                         <div>
                             <ul className="flex space-x-4 items-center">
@@ -38,7 +39,6 @@ const Headers = () => {
                                         <li><button className='btn'><Link to='/'>Add Toys</Link></button></li>
                                     </> : <>
                                         <Link to='/login'> <button className='btn'>login</button></Link>
-                                        <Link to='/blocks'> <button className='btn'>block</button></Link>
                                     </>
                                 }
                             </ul>

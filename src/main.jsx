@@ -26,7 +26,7 @@ const router = createBrowserRouter([
       {
         path:'/',
         element:<Home></Home>,
-        loader:()=>fetch('http://localhost:5000/volunteers'),
+        loader:()=>fetch('http://localhost:5000/tabToys'),
       },
       {
         path:'/login',
@@ -48,7 +48,7 @@ const router = createBrowserRouter([
         path:'/product_detail/:id',
         element:<PrivateRoute><Product_detail></Product_detail></PrivateRoute>,
         loader:({params})=>fetch(`http://localhost:5000/volunteer/${params.id}`)
-      }
+      },
     ]
   },
 ]);
