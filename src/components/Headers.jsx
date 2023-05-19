@@ -26,7 +26,7 @@ const Headers = () => {
                         </div>
                         <div className="flex space-x-4 items-center">
                             <Link to='/'><button className='btn'>Home</button></Link>
-                            <Link to='/'><button className='btn'>All Toys</button></Link>
+                            <Link to='/all_toys'><button className='btn'>All Toys</button></Link>
                             <Link to='/blocks'> <button className='btn'>block</button></Link>
                         </div>
                         <div>
@@ -34,9 +34,9 @@ const Headers = () => {
                                 {
                                     user ? <>
                                         <li> <Link to='/'><button className='btn' onClick={handleLogout}>logOut</button></Link></li>
-                                        <li><button className='btn'><Link to='/'>My Toys</Link></button></li>
-                                        <li onMouseEnter={handleMouseEnter} ><img className='h-16 w-16 rounded-full' src={user.photoURL} alt="" /></li>
-                                        <li><button className='btn'><Link to='/'>Add Toys</Link></button></li>
+                                        <li><button className='btn'><Link to='/my_toys'>My Toys</Link></button></li>
+                                        <li onMouseEnter={handleMouseEnter} >{user.photoURL && <img className='h-16 w-16 rounded-full' src={user.photoURL} alt="" />}</li>
+                                        <li><button className='btn'><Link to='/add_a_toys'>Add a Toy</Link></button></li>
                                     </> : <>
                                         <Link to='/login'> <button className='btn'>login</button></Link>
                                     </>

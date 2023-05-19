@@ -1,6 +1,7 @@
 import React from 'react';
 
 const Admin = () => {
+    
     const handleVolunteerData=(event)=>{
         event.preventDefault();
         const form=event.target;
@@ -10,7 +11,7 @@ const Admin = () => {
         const rating=form.rating.value;
         const volunteerData={img,name,price,rating};
         form.reset();
-       fetch('http://localhost:5000/volunteer',{
+       fetch('https://assignment-11-server-tau-amber.vercel.app/volunteer',{
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

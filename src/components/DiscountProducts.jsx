@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 const DiscountProducts = () => {
     const [products, setProducts] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/discount')
+        fetch('https://assignment-11-server-tau-amber.vercel.app/discount')
             .then(res => res.json())
             .then(data => setProducts(data))
     }, []);

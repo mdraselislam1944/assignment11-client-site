@@ -8,7 +8,7 @@ import NewProducts from './NewProducts';
 const Home = () => {
     const [volunteerData, setVolunteerData] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/volunteers')
+        fetch('https://assignment-11-server-tau-amber.vercel.app/volunteers')
             .then(res => res.json())
             .then(data => setVolunteerData(data));
     }, []);
