@@ -1,9 +1,10 @@
-import React, { useEffect, useState,useContext } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { AuthContext } from './AuthProviders';
+import { Link } from 'react-router-dom';
 const MyToys = () => {
-    var finalProducts=[];
+    var finalProducts = [];
     const [products, setProducts] = useState([]);
-    const {user}=useContext(AuthContext);
+    const { user } = useContext(AuthContext);
     useEffect(() => {
         fetch('http://localhost:5000/addAToys')
             .then(res => res.json())
@@ -11,9 +12,27 @@ const MyToys = () => {
                 setProducts(data);
             });
     }, [])
-    if(user){
-        finalProducts=products?.filter(product=>product.userEmail==user.email);
+    if (user) {
+        finalProducts = products?.filter(product => product.userEmail == user.email);
     }
+
+
+    const handleDelete=(_id)=>{
+        console.log(_id);
+        fetch(`http://localhost:5000/addAToys/${_id}`, {
+            method: 'DELETE'
+        })
+            .then(res => res.json())
+            .then(data => {
+                setProducts(products.filter(product=>product._id!==_id));
+                console.log(data);
+                if (data.deletedCount > 0) {
+                    alert('delete successful');
+                }
+            })
+
+    }
+
     return (
         <div>
             <h1 className='text-center text-2xl'>My toys page</h1>
@@ -32,8 +51,13 @@ const MyToys = () => {
                                     </div>
                                     <p>Rating : {product?.rating}</p>
                                 </div>
-                                <div className="card-actions">
-                                    <button className="btn btn-primary">View Details</button>
+                                <div className='flex items-center justify-between gap-10'>
+                                    <div className="card-actions">
+                                       <Link to={`/my_toys/${product._id}`}><button className="btn btn-primary">Update</button></Link>
+                                    </div>
+                                    <div className="card-actions">
+                                        <button className="btn btn-primary" onClick={()=>handleDelete(product._id)}>Delete</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>

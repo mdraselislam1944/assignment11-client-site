@@ -20,6 +20,7 @@ import AllToys from './components/AllToys.jsx';
 import AddAToy from './components/AddAToy.jsx';
 import MyToys from './components/MyToys.jsx';
 import AllToysDetails from './components/AllToysDetails.jsx';
+import UpdateAddAToys from './components/UpdateAddAToys.jsx';
 
 
 const router = createBrowserRouter([
@@ -59,19 +60,23 @@ const router = createBrowserRouter([
         loader:()=>fetch('http://localhost:5000/addAToys')
       },
       {
-        path:'add_a_toys',
+        path:'/add_a_toys',
         element:<AddAToy></AddAToy>
       },
       {
-        path:'my_toys',
+        path:'/my_toys',
         element:<MyToys></MyToys>
       },
       {
         path:'/all_toys/:id',
         element:<PrivateRoute><AllToysDetails></AllToysDetails></PrivateRoute>,
         loader:({params})=>fetch(`http://localhost:5000/addAToys/${params.id}`)
+      },
+      {
+        path:'/my_toys/:id',
+        element:<UpdateAddAToys></UpdateAddAToys>,
+        loader:({params})=>fetch(`http://localhost:5000/addAToys/${params.id}`)
       }
-
     ]
   },
 ]);

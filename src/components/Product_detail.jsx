@@ -18,6 +18,3 @@ const Product_detail = () => {
 };
 
 export default Product_detail;
-
-
-// picture, toy name, seller name, seller email, price, rating, available quantity, and detail description

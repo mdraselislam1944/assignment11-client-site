@@ -31,8 +31,8 @@ const Home = () => {
                     <button className='btn'>Search</button>
                 </form>
             </div>
-            <div className='ms-24'>
-                <div className='grid grid-cols-3'>
+            <div className='lg:ms-24 ms-16'>
+                <div className='grid grid-cols-1 lg:grid-cols-3'>
                     {
                         volunteerData.map(volunteer => <ShowVolunteer key={volunteer._id} volunteer={volunteer}></ShowVolunteer>)
                     }
@@ -48,10 +48,10 @@ const Home = () => {
                     </div>
                     <div className={toggle == 'doll' ? 'text-center' : 'hidden '}>
                         <h1>Doll</h1>
-                        <div className='grid grid-cols-3 mx-16'>
+                        <div className='grid grid-cols-1 lg:grid-cols-3  lg:mx-16'>
                             {
                                 filterProducts.map(filterProduct => <div key={filterProduct._id} className='my-10'>
-                                    <div className="card w-96 bg-base-100 shadow-xl">
+                                    <div className="card lg:w-96 bg-base-100 shadow-xl">
                                         <figure className="px-10 pt-10">
                                             <img src={filterProduct?.picture} alt="Shoes" className="rounded-xl" />
                                         </figure>
@@ -74,10 +74,10 @@ const Home = () => {
                     </div>
                     <div className={toggle == 'cars' ? 'text-center' : 'hidden '}>
                         <h1>Cars</h1>
-                        <div className='grid grid-cols-3 mx-16'>
+                        <div className='grid grid-cols-1 lg:grid-cols-3 mx-16'>
                             {
                                 filterProducts.map(filterProduct => <div key={filterProduct._id} className='my-10'>
-                                    <div className="card w-96 bg-base-100 shadow-xl">
+                                    <div className="card lg:w-96 bg-base-100 shadow-xl">
                                         <figure className="px-10 pt-10">
                                             <img src={filterProduct?.picture} alt="Shoes" className="rounded-xl" />
                                         </figure>
@@ -100,10 +100,10 @@ const Home = () => {
                     </div>
                     <div className={toggle == 'house' ? 'text-center' : 'hidden '}>
                         <h1>House</h1>
-                        <div className='grid grid-cols-3 mx-16'>
+                        <div className='grid grid-cols-1 lg:grid-cols-3 mx-16'>
                             {
                                 filterProducts.map(filterProduct => <div key={filterProduct._id} className='my-10'>
-                                    <div className="card w-96 bg-base-100 shadow-xl">
+                                    <div className="card lg:w-96 bg-base-100 shadow-xl">
                                         <figure className="px-10 pt-10">
                                             <img src={filterProduct?.picture} alt="Shoes" className="rounded-xl" />
                                         </figure>

@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 const NewProducts = () => {
     const [products, setProducts] = useState([]);
     useEffect(() => {
-        fetch('h/newProduct')
+        fetch('https://assignment-11-server-tau-amber.vercel.app/newProduct')
             .then(res => res.json())
             .then(data => setProducts(data))
     }, []);
@@ -11,7 +11,7 @@ const NewProducts = () => {
         <div className='text-center my-10 mx-10'>
         <h1 className='text-4xl'>New Products</h1>
         <p className='text-2xl my-5'>Product discount promotions are set on individual products and trigger when a shopper adds that product to their cart. There are currently four types of product discount promotions</p>
-        <div className='grid grid-cols-3 mx-16'>
+        <div className='grid grid-cols-1 lg:grid-cols-3 lg:mx-16'>
             {
                 products.map(product => <div key={product._id} className='my-10'>
                     <div className="card w-96 bg-base-100 shadow-xl">

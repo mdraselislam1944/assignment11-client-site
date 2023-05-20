@@ -9,7 +9,7 @@ const ShowVolunteer = ({volunteer}) => {
        star[i]=i;
     }
     return (
-        <div className="my-2 card w-96 bg-base-100 shadow-xl">
+        <div className="my-2 card w-96 bg-base-100 shadow-xl -mx-4">
             <figure><img src={img} alt="Shoes" /></figure>
             <div className="card-body">
                 <h1 className='text-center text-3xl'>{name}</h1>
@@ -30,11 +30,3 @@ const ShowVolunteer = ({volunteer}) => {
 };
 
 export default ShowVolunteer;
-
-
-
-// - Picture, 
-// - Name,
-// - Price, 
-// - Rating and 
-// - View Details button. 
