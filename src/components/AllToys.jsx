@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 const AllToys = () => {
     const products = useLoaderData();
@@ -7,7 +7,7 @@ const AllToys = () => {
         event.preventDefault();
         const form = event.target;
         const search = form.search.value;
-        const filterData = searchItems.filter(searchItem => searchItem.name == search);
+        const filterData = products.filter(searchItem => searchItem.name == search);
         setSearchItems(filterData);
         form.reset();
     }
@@ -23,7 +23,7 @@ const AllToys = () => {
             </div>
             <div className='grid grid-cols-3 mx-16'>
                 {
-                  searchItems.map(product => <div key={product._id} className='my-10'>
+                    searchItems.map(product => <div key={product._id} className='my-10'>
                         <div className="card w-96 bg-base-100 shadow-xl">
                             <figure className="px-10 pt-10">
                                 <img src={product?.img} alt="Shoes" className="rounded-xl" />
@@ -41,7 +41,7 @@ const AllToys = () => {
                                 </div>
                             </div>
                         </div>
-                    </div>) 
+                    </div>)
                 }
             </div>
         </div>
