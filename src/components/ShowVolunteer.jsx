@@ -9,7 +9,7 @@ const ShowVolunteer = ({volunteer}) => {
        star[i]=i;
     }
     return (
-        <div className="my-2 card w-96 bg-base-100 shadow-xl -mx-4">
+        <div className="my-2 card w-96 bg-base-100 shadow-xl -mx-4"  data-aos="flip-left">
             <figure><img src={img} alt="Shoes" /></figure>
             <div className="card-body">
                 <h1 className='text-center text-3xl'>{name}</h1>

@@ -12,7 +12,7 @@ const UpdateAddAToys = () => {
         const description = form.description.value;
         const updateProduct = { price, quantity, description };
 
-        fetch(`http://localhost:5000/addAToys/${product[0]._id}`, {
+        fetch(`https://assignment-11-server-tau-amber.vercel.app/addAToys/${product[0]._id}`, {
             method: 'PATCH',
             headers: {
                 'content-type': 'application/json'

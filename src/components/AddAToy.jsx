@@ -19,7 +19,7 @@ const AddAToy = () => {
             const volunteerData = { img, name, category, price, rating, quantity, description, userName, userEmail };
             console.log(volunteerData);
             form.reset();
-            fetch('http://localhost:5000/addAToys',{
+            fetch('https://assignment-11-server-tau-amber.vercel.app/addAToys',{
                 method: 'POST',
                 headers: {
                   'Content-Type': 'application/json'

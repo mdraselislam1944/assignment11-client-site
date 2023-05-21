@@ -13,7 +13,7 @@ const DiscountProducts = () => {
             <p className='text-2xl my-5'>Product discount promotions are set on individual products and trigger when a shopper adds that product to their cart. There are currently four types of product discount promotions</p>
             <div className='grid grid-cols-1 lg:grid-cols-3 lg:mx-16'>
                 {
-                    products.map(product => <div key={product._id} className='my-10'>
+                    products.map(product => <div key={product._id} className='my-10' data-aos="zoom-in">
                         <div className="card w-96 bg-base-100 shadow-xl">
                             <figure className="px-10 pt-10">
                                 <img src={product.image} alt="Shoes" className="rounded-xl" />

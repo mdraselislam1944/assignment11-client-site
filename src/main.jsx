@@ -21,12 +21,14 @@ import AddAToy from './components/AddAToy.jsx';
 import MyToys from './components/MyToys.jsx';
 import AllToysDetails from './components/AllToysDetails.jsx';
 import UpdateAddAToys from './components/UpdateAddAToys.jsx';
+import ErrorPage from './components/ErrorPage.jsx';
 
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Main></Main>,
+    errorElement:<ErrorPage></ErrorPage>,
     children:[
       {
         path:'/',
@@ -57,20 +59,20 @@ const router = createBrowserRouter([
       {
         path:'/all_toys',
         element:<AllToys></AllToys>,
-        loader:()=>fetch('http://localhost:5000/addAToys')
+        loader:()=>fetch('https://assignment-11-server-tau-amber.vercel.app/addAToys')
       },
       {
         path:'/add_a_toys',
-        element:<AddAToy></AddAToy>
+        element:<PrivateRoute><AddAToy></AddAToy></PrivateRoute>
       },
       {
         path:'/my_toys',
-        element:<MyToys></MyToys>
+        element:<PrivateRoute><MyToys></MyToys></PrivateRoute>
       },
       {
         path:'/all_toys/:id',
         element:<PrivateRoute><AllToysDetails></AllToysDetails></PrivateRoute>,
-        loader:({params})=>fetch(`http://localhost:5000/addAToys/${params.id}`)
+        loader:({params})=>fetch(`https://assignment-11-server-tau-amber.vercel.app/addAToys/${params.id}`)
       },
       {
         path:'/my_toys/:id',

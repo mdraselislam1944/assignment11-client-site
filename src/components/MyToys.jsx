@@ -6,7 +6,7 @@ const MyToys = () => {
     const [products, setProducts] = useState([]);
     const { user } = useContext(AuthContext);
     useEffect(() => {
-        fetch('http://localhost:5000/addAToys')
+        fetch('https://assignment-11-server-tau-amber.vercel.app/addAToys')
             .then(res => res.json())
             .then(data => {
                 setProducts(data);
@@ -16,10 +16,8 @@ const MyToys = () => {
         finalProducts = products?.filter(product => product.userEmail == user.email);
     }
 
-
     const handleDelete=(_id)=>{
-        console.log(_id);
-        fetch(`http://localhost:5000/addAToys/${_id}`, {
+        fetch(`https://assignment-11-server-tau-amber.vercel.app/addAToys/${_id}`, {
             method: 'DELETE'
         })
             .then(res => res.json())
@@ -32,10 +30,30 @@ const MyToys = () => {
             })
 
     }
+    const handleSort=()=>{
+        if (user) {
+            finalProducts = products?.filter(product => product.userEmail == user.email);
+            finalProducts.sort((a, b) => {
+                if (a.price < b.price) {
+                  return -1;
+                }
+                if (a.price > b.price) {
+                  return 1;
+                }
+                return 0;
+              });
+            console.log(finalProducts);
+            // finalProducts = products?.filter(product => product.userEmail == user.email);
+        }
+    }
 
     return (
         <div>
             <h1 className='text-center text-2xl'>My toys page</h1>
+            <div className='flex items-center justify-center'>
+            <button className="btn btn-primary mx-10 my-10" onClick={handleSort}>Show price increasing</button>
+            <button className="btn btn-primary" onClick={handleSort}>Show price descending</button>
+            </div>
             <div className='grid grid-cols-3 mx-16'>
                 {
                     finalProducts?.map(product => <div key={product._id} className='my-10'>

@@ -23,16 +23,10 @@ const Home = () => {
     }
     return (
         <>
-            <Banner></Banner>
-            <div className='text-center my-10'>
-                <h1 className='font-bold text-4xl'>I grow by helping people in need.</h1>
-                <form className='my-8 mx-auto'>
-                    <input type="text" placeholder="Search" className="input input-bordered input-primary w-full max-w-xs" />
-                    <button className='btn'>Search</button>
-                </form>
-            </div>
+            <Banner ></Banner>
+            <h1 className='text-center text-3xl my-5'>Various items toys in Bangladesh</h1>
             <div className='lg:ms-24 ms-16'>
-                <div className='grid grid-cols-1 lg:grid-cols-3'>
+                <div className='grid grid-cols-1 lg:grid-cols-3' >
                     {
                         volunteerData.map(volunteer => <ShowVolunteer key={volunteer._id} volunteer={volunteer}></ShowVolunteer>)
                     }
@@ -50,7 +44,7 @@ const Home = () => {
                         <h1>Doll</h1>
                         <div className='grid grid-cols-1 lg:grid-cols-3  lg:mx-16'>
                             {
-                                filterProducts.map(filterProduct => <div key={filterProduct._id} className='my-10'>
+                                filterProducts.map(filterProduct => <div key={filterProduct._id} className='my-10' data-aos="flip-right">
                                     <div className="card lg:w-96 bg-base-100 shadow-xl">
                                         <figure className="px-10 pt-10">
                                             <img src={filterProduct?.picture} alt="Shoes" className="rounded-xl" />
@@ -76,7 +70,7 @@ const Home = () => {
                         <h1>Cars</h1>
                         <div className='grid grid-cols-1 lg:grid-cols-3 mx-16'>
                             {
-                                filterProducts.map(filterProduct => <div key={filterProduct._id} className='my-10'>
+                                filterProducts.map(filterProduct => <div key={filterProduct._id} className='my-10' data-aos="flip-right">
                                     <div className="card lg:w-96 bg-base-100 shadow-xl">
                                         <figure className="px-10 pt-10">
                                             <img src={filterProduct?.picture} alt="Shoes" className="rounded-xl" />
@@ -102,7 +96,7 @@ const Home = () => {
                         <h1>House</h1>
                         <div className='grid grid-cols-1 lg:grid-cols-3 mx-16'>
                             {
-                                filterProducts.map(filterProduct => <div key={filterProduct._id} className='my-10'>
+                                filterProducts.map(filterProduct => <div key={filterProduct._id} className='my-10' data-aos="flip-right">
                                     <div className="card lg:w-96 bg-base-100 shadow-xl">
                                         <figure className="px-10 pt-10">
                                             <img src={filterProduct?.picture} alt="Shoes" className="rounded-xl" />
